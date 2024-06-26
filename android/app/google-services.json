@@ -1,0 +1,29 @@
+{
+  "project_info": {
+    "project_number": "183693759680",
+    "project_id": "boxn-bc8fa",
+    "storage_bucket": "boxn-bc8fa.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:183693759680:android:fb8d8ec78c048343f58925",
+        "android_client_info": {
+          "package_name": "com.boxcodes.app"
+        }
+      },
+      "oauth_client": [],
+      "api_key": [
+        {
+          "current_key": "AIzaSyBeZqisD7M2mYZnFVZz604kKAZ4ct-7yiQ"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": []
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
