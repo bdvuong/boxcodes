@@ -1,5 +1,5 @@
 name: boxcodes
-description: "A new Flutter project."
+description: "A Flutter app for keeping track of what is in a storage box and where the storage box is located at home!"
 publish_to: 'none'
 version: 0.1.0
 
