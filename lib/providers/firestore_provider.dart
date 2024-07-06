@@ -8,4 +8,8 @@ class FirestoreProvider with ChangeNotifier {
   Future<void> addBox(Box box) async {
     await _firestoreService.addBox(box);
   }
+
+  Future<List<Box>> getAllBoxes() async {
+    return await _firestoreService.getAllBoxes();
+  }
 }
