@@ -15,10 +15,11 @@ class Box {
 
   factory Box.fromDocument(DocumentSnapshot doc) {
     return Box(
-        id: doc.id,
-        name: doc['name'],
-        description: doc['description'],
-        createdDate: doc['createdDate']);
+      id: doc.id,
+      name: doc['name'],
+      description: doc['description'],
+      createdDate: doc['createdDate'],
+    );
   }
 
   Map<String, dynamic> toMap() {
