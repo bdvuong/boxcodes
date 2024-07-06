@@ -1,5 +1,5 @@
 import 'package:boxcodes/models/box.dart';
-import 'package:boxcodes/services/firestore_service.dart';
+import 'package:boxcodes/providers/firestore_provider.dart';
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:flutter/material.dart';
 
@@ -19,7 +19,7 @@ class BoxFormState extends State<BoxForm> {
 
   @override
   Widget build(BuildContext context) {
-    final FirestoreService firestoreService = FirestoreService();
+    final FirestoreProvider firestoreProvider = FirestoreProvider();
     return Form(
       key: _formKey,
       child: Padding(
@@ -58,25 +58,32 @@ class BoxFormState extends State<BoxForm> {
               ),
             ),
             ElevatedButton(
-                onPressed: () async {
-                  if (_formKey.currentState!.validate()) {
-                    _formKey.currentState!.save();
+              onPressed: () async {
+                if (_formKey.currentState!.validate()) {
+                  _formKey.currentState!.save();
 
-                    Box box = Box(
-                      id: "",
-                      name: _name,
-                      description: _description,
-                      createdDate: Timestamp.now(),
-                    );
+                  Box box = Box(
+                    id: "",
+                    name: _name,
+                    description: _description,
+                    createdDate: Timestamp.now(),
+                  );
 
-                    await firestoreService.addBox(box);
+                  await firestoreProvider.addBox(box);
 
-                    // if (context.mounted) {
-                    //   Navigator.pop(context);
-                    // }
-                  }
-                },
-                child: const Text("Submit"))
+                  // if (context.mounted) {
+                  //   Navigator.pop(context);
+                  // }
+                }
+              },
+              child: const Text("Submit"),
+            ),
+            ElevatedButton(
+              onPressed: () async {
+                await firestoreProvider.getAllBoxes();
+              },
+              child: const Text("Get all Boxes"),
+            ),
           ],
         ),
       ),

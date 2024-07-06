@@ -1,4 +1,5 @@
-import 'package:boxcodes/widgets/container_form.dart';
+import 'package:boxcodes/widgets/box_form.dart';
+import 'package:boxcodes/widgets/boxes_view.dart';
 import 'package:flutter/material.dart';
 
 class HomePage extends StatelessWidget {
@@ -13,7 +14,8 @@ class HomePage extends StatelessWidget {
         child: Column(
           mainAxisAlignment: MainAxisAlignment.center,
           children: [
-            ContainerForm(),
+            BoxForm(),
+            BoxesView(),
           ],
         ),
       ),
