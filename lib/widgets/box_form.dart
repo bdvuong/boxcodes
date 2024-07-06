@@ -3,16 +3,16 @@ import 'package:boxcodes/services/firestore_service.dart';
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:flutter/material.dart';
 
-class ContainerForm extends StatefulWidget {
-  const ContainerForm({super.key});
+class BoxForm extends StatefulWidget {
+  const BoxForm({super.key});
 
   @override
-  ContainerFormState createState() {
-    return ContainerFormState();
+  BoxFormState createState() {
+    return BoxFormState();
   }
 }
 
-class ContainerFormState extends State<ContainerForm> {
+class BoxFormState extends State<BoxForm> {
   final _formKey = GlobalKey<FormState>();
   String _name = "";
   String _description = "";
@@ -71,9 +71,9 @@ class ContainerFormState extends State<ContainerForm> {
 
                     await firestoreService.addBox(box);
 
-                    if (context.mounted) {
-                      Navigator.pop(context);
-                    }
+                    // if (context.mounted) {
+                    //   Navigator.pop(context);
+                    // }
                   }
                 },
                 child: const Text("Submit"))
