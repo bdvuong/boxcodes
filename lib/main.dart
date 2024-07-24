@@ -1,6 +1,6 @@
 import 'package:boxcodes/screens/home.dart';
-import 'package:boxcodes/widgets/box_form.dart';
-import 'package:boxcodes/widgets/boxes_view.dart';
+import 'package:boxcodes/widgets/boxes/box_form.dart';
+import 'package:boxcodes/widgets/boxes/boxes_view.dart';
 import 'package:flutter/material.dart';
 import 'package:firebase_core/firebase_core.dart';
 import 'firebase_options.dart';
