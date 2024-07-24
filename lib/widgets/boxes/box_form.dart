@@ -16,6 +16,7 @@ class BoxFormState extends State<BoxForm> {
   final _formKey = GlobalKey<FormState>();
   String _name = "";
   String _description = "";
+  String _error = "";
 
   @override
   Widget build(BuildContext context) {
@@ -25,7 +26,9 @@ class BoxFormState extends State<BoxForm> {
       child: Padding(
         padding: const EdgeInsets.all(10.0),
         child: Column(
+          mainAxisAlignment: MainAxisAlignment.center,
           children: <Widget>[
+            _error.isNotEmpty ? Text(_error) : const SizedBox.shrink(),
             TextFormField(
               validator: (value) {
                 if (value == null || value.isEmpty) {
@@ -69,20 +72,14 @@ class BoxFormState extends State<BoxForm> {
                     createdDate: Timestamp.now(),
                   );
 
-                  await firestoreProvider.addBox(box);
-
-                  // if (context.mounted) {
-                  //   Navigator.pop(context);
-                  // }
+                  try {
+                    await firestoreProvider.addBox(box);
+                  } catch (e) {
+                    _error = e.toString();
+                  }
                 }
               },
               child: const Text("Submit"),
-            ),
-            ElevatedButton(
-              onPressed: () async {
-                await firestoreProvider.getAllBoxes();
-              },
-              child: const Text("Get all Boxes"),
             ),
           ],
         ),

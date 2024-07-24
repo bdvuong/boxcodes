@@ -1,6 +1,7 @@
 import 'package:boxcodes/models/box.dart';
 import 'package:boxcodes/providers/firestore_provider.dart';
 import 'package:flutter/material.dart';
+import 'package:boxcodes/widgets/box_button.dart';
 
 class BoxesView extends StatefulWidget {
   const BoxesView({super.key});
@@ -47,15 +48,11 @@ class _BoxesViewState extends State<BoxesView> {
           final boxes = snapshot.data!;
 
           return ListView.builder(
-            itemCount: boxes.length,
-            itemBuilder: (context, index) {
-              final box = boxes[index];
-              return ListTile(
-                title: Text(box.name),
-                subtitle: Text(box.description),
-              );
-            },
-          );
+              itemCount: boxes.length,
+              itemBuilder: (context, index) {
+                final box = boxes[index];
+                return BoxButton(box: box);
+              });
         },
       ),
     );
