@@ -41,7 +41,7 @@ class _MainAppState extends State<MainApp> {
           ],
         ),
         body: <Widget>[
-          HomePage(),
+          const HomePage(),
           const BoxForm(),
           const BoxesView()
         ][currentPageIndex],
