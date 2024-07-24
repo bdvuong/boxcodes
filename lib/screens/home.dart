@@ -1,4 +1,4 @@
-import 'package:boxcodes/widgets/boxes_view.dart';
+import 'package:boxcodes/widgets/boxes/boxes_view.dart';
 import 'package:flutter/material.dart';
 
 class HomePage extends StatelessWidget {

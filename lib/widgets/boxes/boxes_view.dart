@@ -1,7 +1,7 @@
 import 'package:boxcodes/models/box.dart';
 import 'package:boxcodes/providers/firestore_provider.dart';
 import 'package:flutter/material.dart';
-import 'package:boxcodes/widgets/box_button.dart';
+import 'package:boxcodes/widgets/boxes/box_button.dart';
 
 class BoxesView extends StatefulWidget {
   const BoxesView({super.key});
