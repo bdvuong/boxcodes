@@ -16,12 +16,6 @@ class _BoxesViewState extends State<BoxesView> {
   String currentBox = "";
 
   @override
-  void initState() {
-    super.initState();
-    _boxesFuture = _firestoreProvider.getAllBoxes();
-  }
-
-  @override
   Widget build(BuildContext context) {
     void updateCurrentBox(String newName) {
       setState(() {
@@ -67,7 +61,10 @@ class _BoxesViewState extends State<BoxesView> {
                     subtitle: Text(box.description),
                     onTap: () {
                       updateCurrentBox(box.name);
-                      Navigator.pushNamed(context, "box_edit");
+                      Navigator.push(
+                          context,
+                          MaterialPageRoute(
+                              builder: (context) => const BoxEdit()));
                     },
                   );
                 },
@@ -77,5 +74,11 @@ class _BoxesViewState extends State<BoxesView> {
         ),
       ],
     );
+  }
+
+  @override
+  void initState() {
+    super.initState();
+    _boxesFuture = _firestoreProvider.getAllBoxes();
   }
 }

@@ -12,6 +12,19 @@ class BoxEdit extends StatefulWidget {
 class BoxEditState extends State<BoxEdit> {
   @override
   Widget build(BuildContext context) {
-    return const Scaffold(body: Text("This is the box edit page"));
+    return Scaffold(
+      body: Column(
+        mainAxisAlignment: MainAxisAlignment.center,
+        children: [
+          ElevatedButton(
+            onPressed: () {
+              Navigator.pop(context);
+            },
+            child: const Text("Back"),
+          ),
+          const Text("This is the box edit page"),
+        ],
+      ),
+    );
   }
 }
