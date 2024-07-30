@@ -64,7 +64,7 @@ class _BoxesViewState extends State<BoxesView> {
                       Navigator.push(
                           context,
                           MaterialPageRoute(
-                              builder: (context) => const BoxEdit()));
+                              builder: (context) => BoxEdit(box: box)));
                     },
                   );
                 },

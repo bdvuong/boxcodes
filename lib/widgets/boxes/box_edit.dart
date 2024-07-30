@@ -1,7 +1,10 @@
+import 'package:boxcodes/models/box.dart';
 import 'package:flutter/material.dart';
 
 class BoxEdit extends StatefulWidget {
-  const BoxEdit({super.key});
+  const BoxEdit({super.key, required this.box});
+
+  final Box box;
 
   @override
   State<StatefulWidget> createState() {
@@ -16,13 +19,15 @@ class BoxEditState extends State<BoxEdit> {
       body: Column(
         mainAxisAlignment: MainAxisAlignment.center,
         children: [
-          ElevatedButton(
-            onPressed: () {
-              Navigator.pop(context);
-            },
-            child: const Text("Back"),
+          Center(
+            child: ElevatedButton(
+              onPressed: () {
+                Navigator.pop(context);
+              },
+              child: const Text("Back"),
+            ),
           ),
-          const Text("This is the box edit page"),
+          Text(widget.box.name),
         ],
       ),
     );
