@@ -50,6 +50,7 @@ class BoxFormState extends State<BoxForm> {
                 if (value == null || value.isEmpty) {
                   return "Please enter a description.";
                 }
+                return null;
               },
               onSaved: (value) {
                 _description = value!;
