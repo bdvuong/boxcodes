@@ -1,9 +1,9 @@
 import 'package:boxcodes/models/box.dart';
+import 'package:boxcodes/widgets/boxes/box_form.dart';
 import 'package:flutter/material.dart';
 
 class BoxEdit extends StatefulWidget {
   const BoxEdit({super.key, required this.box});
-
   final Box box;
 
   @override
@@ -19,6 +19,7 @@ class BoxEditState extends State<BoxEdit> {
       body: Column(
         mainAxisAlignment: MainAxisAlignment.center,
         children: [
+          BoxForm(box: widget.box),
           Center(
             child: ElevatedButton(
               onPressed: () {

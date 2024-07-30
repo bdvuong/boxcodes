@@ -4,7 +4,11 @@ import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:flutter/material.dart';
 
 class BoxForm extends StatefulWidget {
-  const BoxForm({super.key});
+  const BoxForm({
+    super.key,
+    this.box,
+  });
+  final Box? box;
 
   @override
   BoxFormState createState() {
@@ -28,8 +32,10 @@ class BoxFormState extends State<BoxForm> {
         child: Column(
           mainAxisAlignment: MainAxisAlignment.center,
           children: <Widget>[
+            widget.box != null ? Text(widget.box!.id) : const Text("no id"),
             _error.isNotEmpty ? Text(_error) : const SizedBox.shrink(),
             TextFormField(
+              initialValue: widget.box?.name,
               validator: (value) {
                 if (value == null || value.isEmpty) {
                   return "Please enter a container name";
@@ -46,6 +52,7 @@ class BoxFormState extends State<BoxForm> {
               ),
             ),
             TextFormField(
+              initialValue: widget.box?.description,
               validator: (value) {
                 if (value == null || value.isEmpty) {
                   return "Please enter a description.";
@@ -74,7 +81,10 @@ class BoxFormState extends State<BoxForm> {
                   );
 
                   try {
-                    await firestoreProvider.addBox(box);
+                    if (widget.box != null) {
+                    } else {
+                      await firestoreProvider.addBox(box);
+                    }
                   } catch (e) {
                     _error = e.toString();
                   }
