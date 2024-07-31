@@ -32,7 +32,7 @@ class BoxFormState extends State<BoxForm> {
         child: Column(
           mainAxisAlignment: MainAxisAlignment.center,
           children: <Widget>[
-            widget.box != null ? Text(widget.box!.id) : const Text("no id"),
+            widget.box == null ? const Text("no id") : Text(widget.box!.id!),
             _error.isNotEmpty ? Text(_error) : const SizedBox.shrink(),
             TextFormField(
               initialValue: widget.box?.name,
@@ -74,17 +74,14 @@ class BoxFormState extends State<BoxForm> {
                   _formKey.currentState!.save();
 
                   Box box = Box(
-                    id: "",
+                    id: widget.box?.id,
                     name: _name,
                     description: _description,
                     createdDate: Timestamp.now(),
                   );
 
                   try {
-                    if (widget.box != null) {
-                    } else {
-                      await firestoreProvider.addBox(box);
-                    }
+                    await firestoreProvider.addBox(box);
                   } catch (e) {
                     _error = e.toString();
                   }
