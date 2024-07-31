@@ -32,7 +32,9 @@ class BoxFormState extends State<BoxForm> {
         child: Column(
           mainAxisAlignment: MainAxisAlignment.center,
           children: <Widget>[
-            widget.box == null ? const Text("no id") : Text(widget.box!.id!),
+            widget.box == null
+                ? const Text("New Container")
+                : Text("Editing Box: ${widget.box!.id!}"),
             _error.isNotEmpty ? Text(_error) : const SizedBox.shrink(),
             TextFormField(
               initialValue: widget.box?.name,

@@ -28,7 +28,6 @@ class BoxEditState extends State<BoxEdit> {
               child: const Text("Back"),
             ),
           ),
-          Text(widget.box.name),
         ],
       ),
     );
