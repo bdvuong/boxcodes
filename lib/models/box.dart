@@ -1,7 +1,7 @@
 import 'package:cloud_firestore/cloud_firestore.dart';
 
 class Box {
-  final String id;
+  String? id;
   final String name;
   final String description;
   final Timestamp createdDate;
@@ -24,6 +24,7 @@ class Box {
 
   Map<String, dynamic> toMap() {
     return {
+      'id': id,
       'name': name,
       'description': description,
       'createdDate': createdDate,
