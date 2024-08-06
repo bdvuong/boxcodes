@@ -1,7 +1,9 @@
 import 'package:boxcodes/models/box.dart';
+import 'package:boxcodes/providers/boxes_provider.dart';
 import 'package:boxcodes/providers/firestore_provider.dart';
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:flutter/material.dart';
+import 'package:provider/provider.dart';
 
 class BoxForm extends StatefulWidget {
   const BoxForm({
@@ -86,6 +88,14 @@ class BoxFormState extends State<BoxForm> {
                     await firestoreProvider.addBox(box);
                   } catch (e) {
                     _error = e.toString();
+                  } finally {
+                    if (context.mounted) {
+                      Provider.of<BoxesProvider>(
+                        context,
+                        listen: false,
+                      ).fetchBoxesData();
+                      Navigator.pop(context);
+                    }
                   }
                 }
               },
