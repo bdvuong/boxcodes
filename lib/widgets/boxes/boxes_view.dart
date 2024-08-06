@@ -13,20 +13,12 @@ class BoxesView extends StatefulWidget {
 class _BoxesViewState extends State<BoxesView> {
   final FirestoreProvider _firestoreProvider = FirestoreProvider();
   late Future<List<Box>> _boxesFuture;
-  String currentBox = "";
 
   @override
   Widget build(BuildContext context) {
-    void updateCurrentBox(String newName) {
-      setState(() {
-        currentBox = newName;
-      });
-    }
-
     return Column(
       mainAxisAlignment: MainAxisAlignment.center,
       children: [
-        Text("Selected Container: $currentBox"),
         SizedBox(
           height: 400.0,
           child: FutureBuilder<List<Box>>(
@@ -60,7 +52,6 @@ class _BoxesViewState extends State<BoxesView> {
                     title: Text(box.name),
                     subtitle: Text(box.description),
                     onTap: () {
-                      updateCurrentBox(box.name);
                       Navigator.push(
                           context,
                           MaterialPageRoute(
