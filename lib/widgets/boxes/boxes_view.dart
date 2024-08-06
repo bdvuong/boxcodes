@@ -16,54 +16,49 @@ class _BoxesViewState extends State<BoxesView> {
 
   @override
   Widget build(BuildContext context) {
-    return Column(
-      mainAxisAlignment: MainAxisAlignment.center,
-      children: [
-        SizedBox(
-          height: 400.0,
-          child: FutureBuilder<List<Box>>(
-            future: _boxesFuture,
-            builder: (context, snapshot) {
-              if (snapshot.connectionState == ConnectionState.waiting) {
-                return const Center(
-                  child: CircularProgressIndicator(),
-                );
-              }
+    return SizedBox(
+      height: 400.0,
+      child: FutureBuilder<List<Box>>(
+        future: _boxesFuture,
+        builder: (context, snapshot) {
+          if (snapshot.connectionState == ConnectionState.waiting) {
+            return const Center(
+              child: CircularProgressIndicator(),
+            );
+          }
 
-              if (snapshot.hasError) {
-                return Center(
-                  child: Text("Error: ${snapshot.error}"),
-                );
-              }
+          if (snapshot.hasError) {
+            return Center(
+              child: Text("Error: ${snapshot.error}"),
+            );
+          }
 
-              if (!snapshot.hasData || snapshot.data!.isEmpty) {
-                return const Center(
-                  child: Text("No containers found."),
-                );
-              }
+          if (!snapshot.hasData || snapshot.data!.isEmpty) {
+            return const Center(
+              child: Text("No containers found."),
+            );
+          }
 
-              final boxes = snapshot.data!;
+          final boxes = snapshot.data!;
 
-              return ListView.builder(
-                itemCount: boxes.length,
-                itemBuilder: (context, index) {
-                  final box = boxes[index];
-                  return ListTile(
-                    title: Text(box.name),
-                    subtitle: Text(box.description),
-                    onTap: () {
-                      Navigator.push(
-                          context,
-                          MaterialPageRoute(
-                              builder: (context) => BoxEdit(box: box)));
-                    },
-                  );
+          return ListView.builder(
+            itemCount: boxes.length,
+            itemBuilder: (context, index) {
+              final box = boxes[index];
+              return ListTile(
+                title: Text(box.name),
+                subtitle: Text(box.description),
+                onTap: () {
+                  Navigator.push(
+                      context,
+                      MaterialPageRoute(
+                          builder: (context) => BoxEdit(box: box)));
                 },
               );
             },
-          ),
-        ),
-      ],
+          );
+        },
+      ),
     );
   }
 
