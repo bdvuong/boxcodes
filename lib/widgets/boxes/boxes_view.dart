@@ -1,6 +1,6 @@
 import 'package:boxcodes/models/box.dart';
 import 'package:boxcodes/providers/boxes_provider.dart';
-import 'package:boxcodes/widgets/boxes/box_edit.dart';
+import 'package:boxcodes/screens/edit_screen.dart';
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 
@@ -51,7 +51,7 @@ class _BoxesViewState extends State<BoxesView> {
                     Navigator.push(
                       context,
                       MaterialPageRoute(
-                        builder: (context) => BoxEdit(box: box),
+                        builder: (context) => EditScreen(box: box),
                       ),
                     );
                   },

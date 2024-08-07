@@ -2,17 +2,17 @@ import 'package:boxcodes/models/box.dart';
 import 'package:boxcodes/widgets/boxes/box_form.dart';
 import 'package:flutter/material.dart';
 
-class BoxEdit extends StatefulWidget {
-  const BoxEdit({super.key, required this.box});
+class EditScreen extends StatefulWidget {
+  const EditScreen({super.key, required this.box});
   final Box box;
 
   @override
   State<StatefulWidget> createState() {
-    return BoxEditState();
+    return EditScreenState();
   }
 }
 
-class BoxEditState extends State<BoxEdit> {
+class EditScreenState extends State<EditScreen> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
