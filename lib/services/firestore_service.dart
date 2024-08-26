@@ -7,7 +7,6 @@ class FirestoreService {
   Future<void> addBox(Box box) async {
     try {
       if (box.id != null) {
-        print(box.id);
         await _db.collection("containers").doc(box.id).set(box.toMap());
       } else {
         await _db.collection("containers").add(box.toMap());
