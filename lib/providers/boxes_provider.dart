@@ -4,6 +4,7 @@ import 'package:flutter/material.dart';
 
 class BoxesProvider extends ChangeNotifier {
   // TODO: Globalize App state to respond to changes when editing a box
+  // TODO: Research if we need this, or if we can just make firestore provider extend the change notifier
   final FirestoreProvider _firestoreProvider = FirestoreProvider();
 
   Future<List<Box>>? _boxesData;
@@ -26,5 +27,13 @@ class BoxesProvider extends ChangeNotifier {
     }
   }
 
-  void add(Box box) {}
+  void add(Box box) {
+    try {
+      _isLoading = true;
+      _firestoreProvider.addBox(box);
+      _boxesData = _firestoreProvider.getAllBoxes();
+    } catch (e) {
+      _errorMessage = "Failed to add container $e";
+    }
+  }
 }
