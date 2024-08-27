@@ -89,12 +89,11 @@ class BoxFormState extends State<BoxForm> {
                   } catch (e) {
                     _error = e.toString();
                   } finally {
-                    if (context.mounted) {
+                    if (context.mounted && box.id != "") {
                       Provider.of<BoxesProvider>(
                         context,
                         listen: false,
                       ).fetchBoxesData();
-                      Navigator.pop(context);
                     }
                   }
                 }
@@ -114,6 +113,14 @@ class BoxFormState extends State<BoxForm> {
                   await firestoreProvider.deleteBox(box);
                 } catch (e) {
                   print("temp");
+                }
+                if (context.mounted) {
+                  Provider.of<BoxesProvider>(
+                    context,
+                    listen: false,
+                  ).fetchBoxesData();
+                  // Clear values here
+                  Navigator.pop(context);
                 }
               },
               child: const Text("Delete"),
