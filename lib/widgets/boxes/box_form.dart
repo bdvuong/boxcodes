@@ -101,6 +101,23 @@ class BoxFormState extends State<BoxForm> {
               },
               child: const Text("Submit"),
             ),
+            ElevatedButton(
+              onPressed: () async {
+                Box box = Box(
+                  id: widget.box?.id,
+                  name: _name,
+                  description: _description,
+                  createdDate: Timestamp.now(),
+                );
+
+                try {
+                  await firestoreProvider.deleteBox(box);
+                } catch (e) {
+                  print("temp");
+                }
+              },
+              child: const Text("Delete"),
+            )
           ],
         ),
       ),

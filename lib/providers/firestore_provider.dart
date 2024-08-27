@@ -12,4 +12,8 @@ class FirestoreProvider with ChangeNotifier {
   Future<List<Box>> getAllBoxes() async {
     return await _firestoreService.getAllBoxes();
   }
+
+  Future<void> deleteBox(Box box) async {
+    await _firestoreService.deleteBox(box);
+  }
 }

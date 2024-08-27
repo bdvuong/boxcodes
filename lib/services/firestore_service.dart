@@ -20,4 +20,12 @@ class FirestoreService {
     QuerySnapshot snapshot = await _db.collection("containers").get();
     return snapshot.docs.map((doc) => Box.fromDocument(doc)).toList();
   }
+
+  Future<void> deleteBox(Box box) async {
+    try {
+      await _db.collection("containers").doc(box.id).delete();
+    } catch (e) {
+      print("Error deleting container: $e");
+    }
+  }
 }
